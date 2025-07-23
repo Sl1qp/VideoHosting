@@ -1,0 +1,31 @@
+services:
+  web-app:
+    build:
+      context: .
+
+    ports:
+      - "8000:8000"
+
+    volumes:
+      - ./videohosting:/videohosting
+
+    environment:
+      - DB_HOST=database
+      - DB_NAME=videohosting
+      - DB_USER=dbuser
+      - DB_PASS=1234
+
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8000"
+
+    depends_on:
+      - database
+
+
+  database:
+    image:  postgres:17-alpine
+
+    environment:
+      - POSTGRES_DB=videohosting
+      - POSTGRES_USER=dbuser
+      - POSTGRES_PASSWORD=1234
