@@ -13,28 +13,23 @@
 | `/v1/videos/statistics-group-by/` | `GET` | Статистика: пользователи с количеством лайков (через group by). Только для staff. |
 
 ## Запуск
-### Создание контейнера:
-```docker-compose build```
+### Запуск проекта производится следующим образом:
+##### 1) В корневой папке создать .env по образу и подобию .env.example
+##### 2) Запустить скрипт .\script.sh
 
-### Миграции: 
-```docker-compose run --rm web-app sh -c "python manage.py migrate"```
-
-### Запуск проекта:
-```docker-compose up```
-
-### Создание суперпользователя:
-```docker-compose run --rm web-app sh -c "python manage.py createsuperuser"```
-
-### Создание тестовых данных:
+### Создание тестовых данных (Опционально):
 ```docker-compose run --rm web-app sh -c "python create_test_data.py"```
 
 ### Админ панель:
-```http://127.0.0.1:8000/admin/```
+##### ```http://127.0.0.1:8000/admin/```
+##### Логин и пароль из .env
 
 ## Аутентификация
 
 #### Отправить Post-запрос на ```http://127.0.0.1:8000/token/``` со следующим боди (JSON):
 ```{"username": "ваш_логин", "password": "ваш_пароль"}```
+###### Или создать токен через админ-панель
+
 ### При следующих обращениях к api указывать в headers: 
 ```Key: Authorization```
 ```Value: Token ваш_токен```
