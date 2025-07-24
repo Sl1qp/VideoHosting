@@ -15,16 +15,20 @@
 ## Запуск
 ### Создание контейнера:
 ```docker-compose build```
+
 ### Миграции: 
-```docker-compose run --rm web-app sh -c "python manage.py makemigrations"``` 
-и
 ```docker-compose run --rm web-app sh -c "python manage.py migrate"```
+
+### Запуск проекта:
+```docker-compose up```
+
 ### Создание суперпользователя:
 ```docker-compose run --rm web-app sh -c "python manage.py createsuperuser"```
+
 ### Создание тестовых данных:
 ```docker-compose run --rm web-app sh -c "python create_test_data.py"```
 
-## Админ панель:
+### Админ панель:
 ```http://127.0.0.1:8000/admin/```
 
 ## Аутентификация
